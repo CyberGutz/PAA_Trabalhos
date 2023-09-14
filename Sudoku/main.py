@@ -1,16 +1,32 @@
-# This is a sample Python script.
+# lambda é que nem a função arrow em flutter () {} ou () => {}
+# Split é que nem o strtok do C. Se ele estiver vazios, o token padrão são os espaços.
+def loadMat(path):
+    with open(path, "r") as arq:
+        mat = []
+        for i in arq.readlines():
+            if i.split():
+                mat.append(list(map(lambda x: int(x), i.split())))
+    return mat
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def verificaLinha(verifica, board, linha):
+    if verifica in board[linha]:
+        return False
+    else: return True
+
+def verificaColuna(verifica, board, coluna):
+    for linha in range(0, len(board)):
+        for col in range(0, len(board)):
+            if col == coluna and verifica == board[linha][col]:
+                return False
+    return True
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+if __name__ == "__main__":
+    board = loadMat("teste.txt")
+    for i in board:
+        print(i)
+    print(verificaLinha(9, board, 3))
+    print(verificaColuna(2, board, 5))
+    
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

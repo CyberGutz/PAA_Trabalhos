@@ -1,32 +1,9 @@
-# lambda é que nem a função arrow em flutter () {} ou () => {}
-# Split é que nem o strtok do C. Se ele estiver vazios, o token padrão são os espaços.
-def loadMat(path):
-    with open(path, "r") as arq:
-        mat = []
-        for i in arq.readlines():
-            if i.split():
-                mat.append(list(map(lambda x: int(x), i.split())))
-    return mat
-
-def verificaLinha(verifica, board, linha):
-    if verifica in board[linha]:
-        return False
-    else: return True
-
-def verificaColuna(verifica, board, coluna):
-    for linha in range(0, len(board)):
-        for col in range(0, len(board)):
-            if col == coluna and verifica == board[linha][col]:
-                return False
-    return True
-
+from Board import Tabuleiro
 
 if __name__ == "__main__":
-    board = loadMat("teste.txt")
-    for i in board:
+    tab = Tabuleiro.loadMat("teste.txt")
+    for i in tab:
         print(i)
-    print(verificaLinha(9, board, 3))
-    print(verificaColuna(2, board, 5))
-    
-
-
+    print(Tabuleiro.verificaLinha(9, tab, 3))
+    print(Tabuleiro.verificaColuna(2, tab, 5))
+    print(Tabuleiro.verificaQuadrante(3, tab, 1, 1))

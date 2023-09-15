@@ -11,3 +11,6 @@ if __name__ == "__main__":
     print(Solver.place(4, tab, 0, 0))
     for i in tab:
         print(i)
+    print(Solver.place(1, tab, 0, 6))
+    for i in tab:
+        print(i)

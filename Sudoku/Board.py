@@ -1,4 +1,4 @@
-class Tabuleiro:
+class Board:
     # Classe Que contém as operações básicas da matriz do tabuleiro de sudoku.
     # Notas:
     # @staticmethod faz um método em python ser estático, ou seja, não é necessário criar um objeto da classe,

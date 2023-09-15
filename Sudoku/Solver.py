@@ -2,13 +2,6 @@ from Board import Board
 
 class Solver:
     @staticmethod
-    def place(num, tabuleiro, linha, coluna):
-        if Solver.safePosition(num, tabuleiro, linha, coluna):
-            tabuleiro[linha][coluna] = num
-            return True
-        else: return False
-
-    @staticmethod
     def safePosition(num, tabuleiro, linha, coluna):
         if num not in range(1,9):
             return False
@@ -18,3 +11,14 @@ class Solver:
             return True
         else:
             return False
+
+    @staticmethod
+    def solve(tabuleiro, iLinha = 0):
+        if iLinha == len(tabuleiro):
+            return True
+        for num in range(1,10):
+            for coluna in range(0, len(tabuleiro)):
+                if Solver.safePosition(num, tabuleiro, iLinha, coluna):
+                    tabuleiro[iLinha][coluna] = num
+                    Solver.solve(tabuleiro, iLinha+1)
+

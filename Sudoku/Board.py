@@ -25,77 +25,26 @@ class Board:
         return True
 
     @staticmethod
-    def verificaColuna(verifica, board, coluna):
-        for linha in range(0, len(board)):
-            for col in range(0, len(board)):
-                if col == coluna and verifica == board[linha][col]:
-                    return False
+    def isComplete(board):
+        for linha in range(0, 9):
+            if not Board.verificaLinha(0, board, linha):
+                return False
         return True
 
     @staticmethod
+    def verificaColuna(verifica, board, coluna):
+        for linha in range(0, len(board)):
+            if verifica == board[linha][coluna]:
+                return False
+        return True
+
+    @staticmethod
+    @staticmethod
     def verificaQuadrante(verifica, board, linha, coluna):
-        if linha in range(0, 2):
-            if coluna in range(0, 2):
-                print("Quadrante 1")
-                for i in range(0, 2):
-                    for j in range(0, 2):
-                        if verifica == board[i][j]:
-                            return False
-                return True
-            elif coluna in range(3, 5):
-                print("Quadrante 2")
-                for i in range(3, 5):
-                    for j in range(3, 5):
-                        if verifica == board[i][j]:
-                            return False
-                return True
-            elif coluna in range(6, 8):
-                for i in range(6, 8):
-                    for j in range(6, 8):
-                        if verifica == board[i][j]:
-                            return False
-                return True
-        elif linha in range(3, 5):
-            if coluna in range(0, 2):
-                print("Quadrante 4")
-                for i in range(0, 2):
-                    for j in range(0, 2):
-                        if verifica == board[i][j]:
-                            return False
-                return True
-            elif coluna in range(3, 5):
-                print("Quadrante 5")
-                for i in range(3, 5):
-                    for j in range(3, 5):
-                        if verifica == board[i][j]:
-                            return False
-                return True
-            elif coluna in range(6, 8):
-                print("Quadrante 6")
-                for i in range(6, 8):
-                    for j in range(6, 8):
-                        if verifica == board[i][j]:
-                            return False
-                return True
-        elif linha in range(6, 8):
-            if coluna in range(0, 2):
-                print("Quadrante 7")
-                for i in range(0, 2):
-                    for j in range(0, 2):
-                        if verifica == board[i][j]:
-                            return False
-                return True
-            elif coluna in range(3, 5):
-                print("Quadrante 8")
-                for i in range(3, 5):
-                    for j in range(3, 5):
-                        if verifica == board[i][j]:
-                            return False
-                return True
-            elif coluna in range(6, 8):
-                print("Quadrante 9")
-                for i in range(6, 8):
-                    for j in range(6, 8):
-                        if verifica == board[i][j]:
-                            return False
-                return True
+        row_start = (linha // 3) * 3
+        col_start = (coluna // 3) * 3
+        for i in range(row_start, row_start + 3):
+            for j in range(col_start, col_start + 3):
+                if verifica == board[i][j]:
+                    return False
+        return True

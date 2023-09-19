@@ -39,7 +39,6 @@ class Board:
         return True
 
     @staticmethod
-    @staticmethod
     def verificaQuadrante(verifica, board, linha, coluna):
         row_start = (linha // 3) * 3
         col_start = (coluna // 3) * 3

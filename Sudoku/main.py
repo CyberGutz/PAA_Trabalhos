@@ -1,14 +1,21 @@
 from Board import Board
 from Solver import Solver
+import os
 
 if __name__ == "__main__":
-    tab = Board.loadMat("teste2.txt")
-    # for i in tab:
-    #     print(i)
-    Solver.solve(tab)
-    for i in tab:
-        print(i)
-    # print(Solver.solve(tab))
-    # # print(tab[1][4])
-    # if 1 in tab[1]:
-    #     print("ok")
+    pastaDeTestes = './Testes'
+    caminhos = [os.path.join(pastaDeTestes, nome) for nome in os.listdir(pastaDeTestes)]
+    testes = []
+    for i in caminhos:
+        testes.append(Board.loadMat(i))
+
+    for i in testes:
+        print("Tabuleiro Anterior")
+        for j in i:
+            print(j)
+        Solver.solve(i)
+        print("\n")
+        print("Tabuleiro Resolvido")
+        for j in i:
+            print(j)
+        print("\n\n")

@@ -17,4 +17,4 @@ Neste repositório, poderão ser encontrados os trabalhos práticos da disciplin
 
    3 - Nenhum disco pode ser colocado em cima de um disco menor que ele.
 
-- Pasta: TODO
+- Pasta: Hanoi Towers

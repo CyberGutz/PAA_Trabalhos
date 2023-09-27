@@ -1,8 +1,11 @@
 import os
 import time
 
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def exibeTorres(A, B, C, t1, t2, t3):
-    os.system('clear')
+    cls()
     tam = max(len(A), len(B), len(C)) 
     for i in range(tam - 1, -1, -1):
         for torre in [A, B, C]:

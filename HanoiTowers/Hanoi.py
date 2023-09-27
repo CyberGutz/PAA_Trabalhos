@@ -4,6 +4,7 @@ class Hanoi:
         if n == 1:
             print("Move de {} pra {}".format(origem, destino))
         else:
-            hanoi(n-1, origem, auxiliar, destino)
+            Hanoi.hanoi(n-1, origem, auxiliar, destino)
             print("Move de {} pra {}".format(origem, destino))
-            hanoi(n-1, auxiliar, destino, origem)
+            Hanoi.hanoi(n-1, auxiliar, destino, origem)
+

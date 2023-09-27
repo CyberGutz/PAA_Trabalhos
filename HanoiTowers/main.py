@@ -1,6 +1,8 @@
-from Hanoi import Hanoi
 import os
 import time
+
+from Hanoi import Hanoi
+
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
@@ -17,7 +19,7 @@ def comoFunciona():
     op = input("\n\nGostaria de ver como funciona a resolução das torres de hanoi por indução recursiva? (s/n): ")
     if op == 'n':
         cls()
-        return;
+        return
     elif op == 's':
         cls()
         print("\n\tTorres de Hanoi por Indução recursiva")
@@ -50,6 +52,12 @@ def comoFunciona():
         cls()
         return
 
+def criaPilha(tamanho):
+    for i in range(tamanho):
+        A.append(tamanho)
+        tamanho = tamanho-1
+    return A
+
 if __name__ == '__main__':
     cls()
     while True:
@@ -67,11 +75,38 @@ if __name__ == '__main__':
         elif option == "1":
             cls()
             print("\n\tResolvendo o problema da Torre de Hanoi via Indução...")
+          
             discs = input("Digite o número de discos: ")
             t1 = input("Digite o nome da Torre 1: ")
             t2 = input("Digite o nome da Torre 2: ")
             t3 = input("Digite o nome da Torre 3: ")
-            Hanoi.hanoi(int(discs), t1, t2, t3)
+            input("\n\nAperte Qualquer tecla para continuar...")
+            cls()
+          
+            print("===== COMO DESEJA A EXIBIÇÃO? =====\n")
+            print("1 - Linhas de transição\n")
+            print("2 - Pilhas de transição\n")
+            print("\n===================================")
+            option = input("Digite Sua opção: ")
+            cls()
+            if option == "1":
+                Hanoi.hanoi(int(discs), t1, t2, t3)
+                input("\n\nAperte Qualquer tecla para continuar...")
+                cls()
+            elif option == "2":
+                tam = int(discs)
+                A = []
+                B = []
+                C = []
+                A = criaPilha(int(discs))
+                Hanoi.hanoiPilha(tam, A, B, C, t1, t2, t3)
+                input("\n\nAperte Qualquer tecla para continuar...")
+                cls()
+            else: 
+              cls()
+              print("Opção Inválida!")
+              time.sleep(0.75)
+              cls()
         elif option == "2":
             cls()
             comoFunciona()

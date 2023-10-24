@@ -1,3 +1,6 @@
-# Press the green button in the gutter to run the script.
+from divideAndConquer import DivConquer
+
 if __name__ == '__main__':
-    pass
+    array = [-1, 0, 3, 2, -4, 5, -7, 8, -20]
+    problem = DivConquer(array)
+    print(problem.divide())

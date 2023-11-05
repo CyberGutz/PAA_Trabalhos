@@ -1,56 +1,45 @@
-class DivConquer:
+class MaximumSubarray:
     def __init__(self, array):
         self.array = array
-        self.maxsum = []
-        self.sum = int(0)
 
-    # Função para calcular a soma de um subarray:
-    def soma(self, subarray):
-        soma = 0
-        for i in subarray:
-            soma += i
-        if soma > self.sum:
-            self.sum = soma
-            self.maxsum = subarray
-            return True  # Indica que a soma foi atualizada
-        else:
-            return False  # Indica que a soma não foi atualizada
+    def find_maximum_subarray(self):
+        max_value, start, end = self._find_maximum_subarray(0, len(self.array))
+        return self.array[start:end]
 
-    def divide(self, array=None):
-        if array is None:
-            array = self.array
-        return self.divide_subArray(array)  # Chama a recursão (Divisão e Conquista).
+    def _find_maximum_subarray(self, low, high):
+        if low == high - 1:
+            return self.array[low], low, low + 1
 
-    # Função principal de divisão e conquista para encontrar o maior subarray.
-    def divide_subArray(self, array):
-        if len(array) == 1:
-            self.soma(array)
-            return array  # Retorna um array de um elemento.
+        middle = (low + high) // 2
+        left_max, left_start, left_end = self._find_maximum_subarray(low, middle)
+        right_max, right_start, right_end = self._find_maximum_subarray(middle, high)
+        crossing_max, crossing_start, crossing_end = self._find_maximum_crossing_subarray(low, middle, high)
 
-        meio = len(array) // 2 # Indice do meio do array
-        esquerda = self.divide_subArray(array[:meio])  # Divide a metade esquerda.
-        direita = self.divide_subArray(array[meio:])  # Divide a metade direita.
-        conexao = self.maior_subArray_conexao(array, meio)  # Encontra o subarray que cruza o meio (entre arrays).
+        max_value, start, end = max((left_max, left_start, left_end),
+                                    (right_max, right_start, right_end),
+                                    (crossing_max, crossing_start, crossing_end))
 
-        # Retorne o subarray com a maior soma entre os três (esquerda, direita, e conexao).
-        return max(esquerda, direita, conexao, key=sum)   
-    
-    # Função para encontrar o subarray com a maior soma que cruza o meio do array.
-    def maior_subArray_conexao(self, array, meio):
-        # Variáveis para armazenar as somas à esquerda e à direita do meio.
-        somaE = somaD = float('-inf')  # Iniciando com o menor valor float possível
-        maxE = maxD = []  # Listas para armazenar os subarrays
+        return max_value, start, end
 
-        soma = 0
-        for i in range(meio - 1, -1, -1):
-            soma += array[i]
-            maxE.insert(0, array[i])  # Insere elementos à esquerda em ordem contrária.
-            somaE = max(somaE, soma)  # Atualiza a maior soma à esquerda.
+    def _find_maximum_crossing_subarray(self, low, middle, high):
+        left_max_sum = float('-inf')
+        left_sum = 0
+        left_index = middle
 
-        soma = 0
-        for i in range(meio, len(array)):
-            soma += array[i]
-            maxD.append(array[i])  # Insere elementos à direita.
-            somaD = max(somaD, soma)  # Atualiza a maior soma à direita.
+        for i in range(middle - 1, low - 1, -1):
+            left_sum += self.array[i]
+            if left_sum > left_max_sum:
+                left_max_sum = left_sum
+                left_index = i
 
-        return maxE + maxD  # Retorna o subarray que cruza o meio.
+        right_max_sum = float('-inf')
+        right_sum = 0
+        right_index = middle
+
+        for i in range(middle, high):
+            right_sum += self.array[i]
+            if right_sum > right_max_sum:
+                right_max_sum = right_sum
+                right_index = i
+
+        return left_max_sum + right_max_sum, left_index, right_index + 1

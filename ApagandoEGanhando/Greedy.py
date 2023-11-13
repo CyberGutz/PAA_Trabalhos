@@ -10,10 +10,10 @@ class Greedy:
 
     def solve(self):
         if self.D == 0:
-            s = str(self.N_array)
-            s.translate({ord(i): None for i in '[,] '})
-            self.N = int(s)
-            return self.N
+            # s = str(self.N_array)
+            # s.translate({ord(i): None for i in '[,] '})
+            # self.N = int(s)
+            return self.N_array
         else:
             del self.N_array[self.escolhaGulosa()]
             self.D -= 1
@@ -21,6 +21,7 @@ class Greedy:
 
     def escolhaGulosa(self):
         # Se o primeiro digito do array é 0, é a escolha óbvia, pois é um 0 a esquerda.
+        global position
         if self.N_array[0] == 0:
             return 0
         else:

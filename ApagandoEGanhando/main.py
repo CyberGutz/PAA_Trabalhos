@@ -1,3 +1,7 @@
+from Greedy import Greedy
+
 
 if __name__ == "__main__":
-    print("Apagando e Ganhando")
+    problema = Greedy()
+    print(problema.N)
+    print(problema.D)

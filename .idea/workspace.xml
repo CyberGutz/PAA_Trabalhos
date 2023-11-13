@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a5e2454-ed96-4604-97e8-93b143ae670d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ApagandoEGanhando/Greedy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApagandoEGanhando/Greedy.py" beforeDir="false" afterPath="$PROJECT_DIR$/ApagandoEGanhando/Greedy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ApagandoEGanhando/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ApagandoEGanhando/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

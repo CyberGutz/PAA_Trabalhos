@@ -10,7 +10,10 @@ class Greedy:
 
     def solve(self):
         if self.D == 0:
-            return self.N_array
+            s = str(self.N_array)
+            s.translate({ord(i): None for i in '[,] '})
+            self.N = int(s)
+            return self.N
         else:
             del self.N_array[self.escolhaGulosa()]
             self.D -= 1
@@ -31,5 +34,5 @@ class Greedy:
                     aux += j
                 if aux > soma:
                     soma = aux
-                    pos = i
+                    position = i
             return position

@@ -7,4 +7,5 @@ if __name__ == '__main__':
   max_subarray = problem.find_maximum_subarray()
   max_subarray_sum = sum(max_subarray)
   print("Maior Subarray Contíguo:", max_subarray)
+
   print("Soma do Maior Subarray Contíguo:", max_subarray_sum)

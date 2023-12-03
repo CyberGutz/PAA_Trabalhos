@@ -1,0 +1,72 @@
+5165951
+remove 5 
+verifica:
+1+
+50+
+900+
+6000+
+10000+
+500000+
+= 516950
+
+1627893728376
+
+====================================
+Solução menos burra
+
+[5,1,6,5,9,5,1]
+lista.remove(5)
+[5,1,6,9,5,1]
+lista -> int
+= 526952
+verifica esse com a solução passada
+
+começa o programa
+entrada N = Número de Digitos
+entrada D = Dígitos a serem apagados
+entrada Num = Número do prêmio
+
+solve()
+if D == 0:
+	#concatena o Vetor de Num
+	return Num
+else:
+	D -= 1
+	escolha gulosa
+	apaga o escolhido
+	chama recursivo
+
+
+verificação = maxint
+se concatenado for menor do que verificação
+verificação = concatenado
+posição = indice
+
+
+# escolha gulosa
+pega o mais a direita
+verifica do mais a esquerda ao mais a direita
+	se esquerda > ULTIMO:
+		remove esquerda
+	se esquerda == ultimo:
+		remove ultimo
+
+****************************************************
+def solve(pilha, qtd_rm):
+	for i in range(0, qtd_rm):
+		pilha.pop(escolha_gulosa(pilha))
+
+# escolha gulosa -> python
+def escolha_gulosa(pilha):
+	ultimo = pilha[len(pilha)-1]
+	if ultimo == 0:
+		return ultimo
+	else:
+		for i in range (len(pilha), 0):
+			if pilha[i] > ultimo:
+				ultimo = pilha[i]
+		return ultimo
+*****************************************************
+
+Algoritmo -> O(n²)
+O(1) -> O(n) -> O(nlogn) -> O(n²) -> O(2^n) -> O(n!)

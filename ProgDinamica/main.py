@@ -19,7 +19,7 @@ def menor_string_como_subsequencia_modificado(A, B):
         print([val if val != -1 else '*' for val in row])
 
     # Obtém o menor tamanho de uma célula diferente na tabela
-    menor_tamanho = tabela[tam_A // 2][tam_B // 2]
+    menor_tamanho = tabela[tam_A][tam_B]
 
     # Retorna o tamanho total das strings menos o tamanho da menor subsequência comum
     return tam_A + tam_B - menor_tamanho
